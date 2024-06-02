@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication1.Models.Entities.Kitap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Library</h1>
+
+<p>
+    <a asp-action="Sayfa">Look different</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Isbn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PageCount)
+            </th>
+            <th>
+                Authors
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageCount)
+            </td>
+            <td>
+                    @foreach(var yazar in item.Authors)
+                    {
+                      <li>@yazar</li>  
+                    }
+
+            </td>
+            <td>
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
